@@ -19,10 +19,10 @@ fi
 #second arg -> exit code
 VALIDATE(){
     if [ $2 -ne 0 ]; then
-        echo "$TIMESTAMP [ERROR] Installing $1 is ... $R FAILED $N" | tee -a $LOGS_FILE
+        echo -e "$TIMESTAMP [ERROR] Installing $1 is ... $R FAILED $N" | tee -a $LOGS_FILE
         exit 1
     else 
-        echo "$TIMESTAMP [INFO] Installing $1 ... $G SUCCESS $N" | tee -a $LOGS_FILE
+        echo -e "$TIMESTAMP [INFO] Installing $1 ... $G SUCCESS $N" | tee -a $LOGS_FILE
     fi
 }
 for package in $@
@@ -30,7 +30,7 @@ do
    echo "$TIMESTAMP [INFO] installing $package"
    dnf list installed $package &>> $LOGS_FILE
     if [ $? -eq 0 ]; then
-        echo "$TIMESTAMP [INFO] $package is already installed... $Y SKIPPING $N" | tee -a $LOGS_FILE
+        echo -e "$TIMESTAMP [INFO] $package is already installed... $Y SKIPPING $N" | tee -a $LOGS_FILE
     else    
         echo "$TIMESTAMP [INFO] installing $package"
         dnf install $package -y &>> $LOGS_FILE
