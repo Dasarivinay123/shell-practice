@@ -23,7 +23,7 @@ VALIDATE(){
 }
 for package in $@
 do
-   echo "$TIMESTAMP installing $package"
+   echo "$TIMESTAMP [INFO] installing $package"
    dnf list installed $package &>> $LOGS_FILE
     if [ $? -eq 0 ]; then
         echo "$TIMESTAMP [INFO] $package is already installed...SKIPPING" | tee -a $LOGS_FILE
