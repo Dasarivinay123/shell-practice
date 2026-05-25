@@ -14,10 +14,10 @@ fi
 #second arg -> exit code
 VALIDATE(){
     if [ $2 -ne 0 ]; then
-        echo "Installing $1 is ...FAILED"
+        echo "Installing $1 is ...FAILED" | tee -a $LOGS_FILE
         exit 1
     else 
-        echo "Installing $1 ....SUCESS"
+        echo "Installing $1 ....SUCCESS" | tee -a $LOGS_FILE
     fi
 }
 dnf list installed mysql &>> $LOGS_FILE
